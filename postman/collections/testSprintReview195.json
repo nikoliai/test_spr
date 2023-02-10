@@ -81,6 +81,21 @@
 								"description": "cool test request"
 							},
 							"response": []
+						},
+						{
+							"name": "get request",
+							"id": "0f10fd29-acea-4ff1-a477-cf8e87026695",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								}
+							},
+							"response": []
 						}
 					],
 					"id": "816b32d6-497d-4a66-a21c-9e61a02459dd",
