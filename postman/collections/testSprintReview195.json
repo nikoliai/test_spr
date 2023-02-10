@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "8ed71e38-b4c4-4994-b97c-689c54ab3dad",
+		"name": "testSprintReview195",
+		"description": "## **This is a very cool presentation**",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_uid": "25616855-8ed71e38-b4c4-4994-b97c-689c54ab3dad"
+	},
+	"item": [
+		{
+			"name": "ratman",
+			"item": [
+				{
+					"name": "FU-6666",
+					"item": [
+						{
+							"name": "https://www.postman-echo.com/get",
+							"id": "f04b4fa4-e7ae-4b70-9725-621f1c405dfd",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://www.postman-echo.com/get",
+									"protocol": "https",
+									"host": [
+										"www",
+										"postman-echo",
+										"com"
+									],
+									"path": [
+										"get"
+									]
+								},
+								"description": "testRequest"
+							},
+							"response": []
+						},
+						{
+							"name": "get Ds",
+							"id": "98d0dde9-615f-4742-9e8f-ecbd5ca5c0f1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/rest/v1/ds/sets/{{dsId}}",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"rest",
+										"v1",
+										"ds",
+										"sets",
+										"{{dsId}}"
+									]
+								},
+								"description": "get ds"
+							},
+							"response": []
+						},
+						{
+							"name": "testRequest",
+							"id": "1ef48ea9-bf56-4e88-a8cf-d8f7db038b61",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": ""
+								},
+								"description": "cool test request"
+							},
+							"response": []
+						}
+					],
+					"id": "816b32d6-497d-4a66-a21c-9e61a02459dd",
+					"description": "[Link to ticket](https://issuetracking.bsh-sdd.com/browse/FU-6836)"
+				},
+				{
+					"name": "FU-6667",
+					"item": [
+						{
+							"name": "post Super Ds",
+							"id": "3e6a7eb8-5b95-4f81-ab51-797c66f4a9f1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "IokYGc1k54B0ygPSGCwbw1Zyfbs8yjELKbt8PDRjDKo",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "pxx",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"metadata\": {\n        \"name\": \"SuperDs for SYMANA\",\n        \"timestamp\": 0\n    },\n    \"distributionSetList\": [\n        {\n            \"metadata\": {\n                \"index\": \"1\",\n                \"name\": \"ds for symana FU-6938\",\n                \"description\": \"supplierId\",\n                \"architecture\": \"SYMANA\",\n                \"category\": \"BUG_FIX\",\n                \"severity\": \"RECOMMENDED\",\n                \"execution\": \"REGULAR\",\n                \"downloadMode\": \"REGULAR\",\n                \"releaseNotesId\": \"1234\",\n                \"createdBy\": \"Olga\",\n                \"supplierId\": 1\n            },\n            \"customDependencies\": {\n                \"checkType\": \"SimpleCheck\",\n                \"id\": 666665,\n                \"version\": {\n                    \"major\": 3,\n                    \"minor\": 0,\n                    \"revision\": 0,\n                    \"build\": 100\n                },\n                \"operator\": \"lessOrEqualTo\",\n                \"type\": \"Firmware\"\n            },\n            \"modules\": [\n                {\n                    \"id\": 666665,\n                    \"version\": {\n                        \"major\": 3,\n                        \"minor\": 0,\n                        \"revision\": 0,\n                        \"build\": 5\n                    }\n                }\n            ]\n        }\n    ]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-gateway.stg.dev.homeconnectfds.com/1.0/pxx/superDistributionSet",
+									"protocol": "https",
+									"host": [
+										"api-gateway",
+										"stg",
+										"dev",
+										"homeconnectfds",
+										"com"
+									],
+									"path": [
+										"1.0",
+										"pxx",
+										"superDistributionSet"
+									]
+								},
+								"description": "Test ds creation"
+							},
+							"response": []
+						},
+						{
+							"name": "post Super ds 2",
+							"id": "065e360c-8cdc-4524-aa55-fb8a4e6bfe10",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"metadata\": {\n        \"name\": \"SuperDs for SYMANA\",\n        \"timestamp\": 0\n    },\n    \"distributionSetList\": [\n        {\n            \"metadata\": {\n                \"index\": \"1\",\n                \"name\": \"ds for symana FU-6938\",\n                \"description\": \"supplierId\",\n                \"architecture\": \"SYMANA\",\n                \"category\": \"BUG_FIX\",\n                \"severity\": \"RECOMMENDED\",\n                \"execution\": \"REGULAR\",\n                \"downloadMode\": \"REGULAR\",\n                \"releaseNotesId\": \"1234\",\n                \"createdBy\": \"Olga\",\n                \"supplierId\": 1\n            },\n            \"customDependencies\": {\n                \"checkType\": \"SimpleCheck\",\n                \"id\": 666665,\n                \"version\": {\n                    \"major\": 3,\n                    \"minor\": 0,\n                    \"revision\": 0,\n                    \"build\": 100\n                },\n                \"operator\": \"lessOrEqualTo\",\n                \"type\": \"Firmware\"\n            },\n            \"modules\": [\n                {\n                    \"id\": 666665,\n                    \"version\": {\n                        \"major\": 3,\n                        \"minor\": 0,\n                        \"revision\": 0,\n                        \"build\": 5\n                    }\n                }\n            ]\n        }\n    ]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api-gateway.stg.dev.homeconnectfds.com/1.0/pxx/superDistributionSet",
+									"protocol": "https",
+									"host": [
+										"api-gateway",
+										"stg",
+										"dev",
+										"homeconnectfds",
+										"com"
+									],
+									"path": [
+										"1.0",
+										"pxx",
+										"superDistributionSet"
+									]
+								},
+								"description": "Another request"
+							},
+							"response": []
+						},
+						{
+							"name": "https://keycloak.srv.reu.bsh-lando.com/auth/realms/HC_CDR/protocol/openid-connect/token",
+							"id": "6e0ba6b6-b6e9-449c-af7d-7db94a42cd20",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "hc-contentservices-dev",
+											"type": "string"
+										},
+										{
+											"key": "password",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "grant_type",
+											"value": "password",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "technical.frn",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "bp9AtFE&_-",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "https://keycloak.srv.reu.bsh-lando.com/auth/realms/HC_CDR/protocol/openid-connect/token",
+									"protocol": "https",
+									"host": [
+										"keycloak",
+										"srv",
+										"reu",
+										"bsh-lando",
+										"com"
+									],
+									"path": [
+										"auth",
+										"realms",
+										"HC_CDR",
+										"protocol",
+										"openid-connect",
+										"token"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"id": "25f085fa-a91d-43be-83e1-652246616b45"
+				}
+			],
+			"id": "77d87112-7016-44fc-a0f4-b4e315fa19bf",
+			"description": "The ratman performs\n\n<img src=\"https://lh3.googleusercontent.com/2FO9e77f2a_GKDVpBRk9vDasowE_JEiKGtQImspZvu2qbN_7nRGTUFX_exKZlN8mlPq7F6WrLMN2ruTixWebk6z7-kUQYPKksuEiSnZxf6isfhs-Hdix_htSaIJB1AzprN53fKYohxwP90nMD1g-E5JGgg=s2048\" width=\"100\" height=\"110\">"
+		},
+		{
+			"name": "bobin",
+			"item": [],
+			"id": "3b8cd795-2221-40eb-9e51-3552c6dcce27"
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "password",
+				"value": "IokYGc1k54B0ygPSGCwbw1Zyfbs8yjELKbt8PDRjDKo",
+				"type": "string"
+			},
+			{
+				"key": "username",
+				"value": "pxx",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "aa73bbdf-2d74-4a11-99f0-45bc2f4d1a6c",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "a4515cfe-0782-4444-a265-92e65ee2b21f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
