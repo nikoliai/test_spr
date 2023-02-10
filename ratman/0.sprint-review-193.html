@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.18">
+<title>Ratman Sprint Review 193</title>
+<style>
+/* Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+
+@import url(//fonts.googleapis.com/css?family=Noto+Sans);
+@import url(https://cdn.jsdelivr.net/gh/asciidoctor/asciidoctor@2.0/data/stylesheets/asciidoctor-default.css); /* Default asciidoc style framework - important */
+
+/* CUSTOMISATIONS */
+/* Change the values in root for quick customisation. If you want even more fine grain... venture further. */
+
+:root{
+  --maincolor:#FFFFFF;
+  --primarycolor:#009688; /* Teal 500 */
+  --secondarycolor:#ba3925;
+  --tertiarycolor: #186d7a;
+  --sidebarbackground:#004d40; /* Teal 900 */
+  --linkcolor:#80cbc4; /* Teal 200 */
+  --linkcoloralternate:#f44336;
+  --white:#FFFFFF;
+  --black:#000000;
+}
+
+body{font-family: "Noto Sans",sans-serif;}
+
+#header{background-color:var(--primarycolor); padding:25px;max-width: none;}
+#footer{background-color: var(--sidebarbackground);}
+h1,h2,h3{background-color:var(--primarycolor);color:var(--white) !important;font-family:"Noto Sans",sans-serif;text-decoration:none;padding:10px;}
+h4,h5,h6{color:var(--primarycolor);}
+.title{color:var(--sidebarbackground) !important;font-family:"Noto Sans",sans-serif;font-style: normal; font-weight: normal;}
+p{font-family: "Noto Sans",sans-serif ! important}
+#toc.toc2 a:link{color:white;}
+
+a {
+  text-decoration: none;
+  color: var(--linkcolor);
+}
+a:hover {
+  color: var(--sidebarbackground);
+}
+.quoteblock blockquote::before {
+  color: var(--linkcolor);
+}
+mark {
+  color: var(--white);
+  background-color: #80cbc4;
+}
+
+/* Card styling */
+.sect1{border-bottom:1px solid grey;border-radius:8px;}
+
+/* Table styles */
+th{background-color: #80cbc4;color:#FFFFFF;}
+
+#toc.toc2{background-color:var(--sidebarbackground);color:white !important;}
+#toc.toc2.a{color:var(--white);}
+#toc.toc2.a:active{color:var(--white) !important;}
+#toc.toc2.a:visited{color:var(--white) !important;}
+#toctitle{color:white;font-size: 16px;}
+
+/* Responsiveness fixes */
+video {
+  max-width: 100%;
+}
+
+@media all and (max-width: 600px) {
+  table {
+    width: 55vw !important;
+    font-size: 3vw;
+  }
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="article">
+<div id="header">
+<h1>Ratman Sprint Review 193</h1>
+<div id="toc" class="toc">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel2">
+<li><a href="#_1_improved_fds_controller_exception_handling_fu_6836">1. Improved FDS-Controller exception handling FU-6836</a></li>
+<li><a href="#_2_oem_separate_package_persistence_by_supplier_id_fu_6893_and_distributionsets_for_oem_can_be_created_fu_6751">2. [OEM] separate package persistence by supplier ID FU-6893 and Distributionsets for OEM can be created FU-6751</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect2">
+<h3 id="_1_improved_fds_controller_exception_handling_fu_6836">1. Improved FDS-Controller exception handling <a href="http://issuetracking.bsh-sdd.com/browse/FU-6836">FU-6836</a></h3>
+<div class="sect5">
+<h6 id="_problem_exceptions_without_body_are_hard_to_follow"><strong>Problem</strong>: Exceptions without body are hard to follow</h6>
+
+</div>
+<div class="sect5">
+<h6 id="_solution_introduce_exceptions_with_problem_json_details"><strong>Solution</strong>: Introduce Exceptions with problem json details</h6>
+<div class="ulist">
+<ul>
+<li>
+<p>As a first step towards well established problem detail json we enable our services to return proper details as json in the case of any failure on a rest-endpoint</p>
+</li>
+<li>
+<p>See details on fields of the <a href="https://wiki.bsh-sdd.com/display/FU/2022-12-22+Sprint+193+Review">Problem Details fields</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Spring-services</strong> return problem detail jsons when requested via accept-header "application/problem+json"</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>Connect to ds</code></p>
+</li>
+<li>
+<p><code>Try to get not existing ds</code></p>
+</li>
+<li>
+<p><code>Try to call wrong method</code></p>
+</li>
+<li>
+<p><code>Try to create incompatible configuration for btm</code></p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p><strong>Micronaut services</strong> always return problem detail jsons</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><em>Connect to firmware-packaging-service</em></p>
+</li>
+<li>
+<p><em>Generate micronaut errors</em></p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="icon"><i class="fa fa-comment"></i></span> Undocumented feature: problem details are available for all endpoints of api-gateway via accept header problem+json.
+Behaviours of documented problem details are unchanged.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_oem_separate_package_persistence_by_supplier_id_fu_6893_and_distributionsets_for_oem_can_be_created_fu_6751">2. [OEM] separate package persistence by supplier ID <a href="https://issuetracking.bsh-sdd.com/browse/FU-6893">FU-6893</a> and Distributionsets for OEM can be created <a href="https://issuetracking.bsh-sdd.com/browse/FU-6751">FU-6751</a></h3>
+<div class="ulist">
+<div class="title">New package structure:</div>
+<ul>
+<li>
+<p>REU development:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>firmware-repository-dev-homeconnectfds-com/fds/packages_testing/</p>
+</li>
+<li>
+<p>firmware-repository-dev-homeconnectfds-com/fds/packages_qualification/</p>
+</li>
+<li>
+<p>firmware-repository-dev-homeconnectfds-com/fds/packages_validation/
+REU production:</p>
+</li>
+<li>
+<p>firmware-repository-reu-homeconnectfds-com/fds/packages_operation/</p>
+</li>
+<li>
+<p>firmware-repository-reu-homeconnectfds-com/fds/packages_production/
+RGC development:</p>
+</li>
+<li>
+<p>firmware-repository-dev-homeconnectfds-cn/fds/packages_validation/
+RGC production:</p>
+</li>
+<li>
+<p>firmware-repository-rgc-homeconnectfds-cn/fds/packages_operation/</p>
+</li>
+<li>
+<p>firmware-repository-rgc-homeconnectfds-cn/fds/packages_production/</p>
+</li>
+<li>
+<p>with subfolders</p>
+<div class="ulist">
+<ul>
+<li>
+<p>internal for BSH internal/1 update packages</p>
+</li>
+<li>
+<p>oem/&lt;supplierId&gt; for OEM supplied update packages with their supplierId#</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title"><strong>Create DS for oem via bulk-distribution-set</strong></div>
+<ul>
+<li>
+<p>Superds for OEM (adjust supplierId to something different than 1)</p>
+<div class="ulist">
+<ul>
+<li>
+<p><em>get hash of the up and check in the AWS repo</em></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Superds for SYMANA</p>
+</li>
+<li>
+<p>Superds without supplier id</p>
+</li>
+</ul>
+</div>
+<div class="ulist">
+<div class="title"><strong>Create DS in ASC</strong></div>
+<ul>
+<li>
+<p>Create ds, check</p>
+</li>
+<li>
+<p><em>import of firmware modules for OEM</em></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Type the word <span class="userinput">asciidoctor</span> into the search bar.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>When the user types the three letters ad-, the editor suggests live templates for common AsciiDoc structures like lists, links and source code. C</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="icon"><i class="fa fa-file"></i></span> And a file icon</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>undocumented feature: problem details are available for all endpoints of api-gateway via accept header problem+json.</p>
+</div>
+<div class="paragraph">
+<p>Behaviours of documented problem details are unchanged.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="exampleblock">
+<div class="title">Example 1. Optional title</div>
+<div class="content">
+This is an example of an example block.
+</div>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="title">Optional Title</div>
+<div class="paragraph">
+<p>Sidebars are used to visually separate auxiliary bits of content
+that supplement the main text.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+They can contain any type of content.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-02-02 19:00:03 +0100
+</div>
+</div>
+</body>
+</html>

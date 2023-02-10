@@ -1,0 +1,55 @@
+{
+    "metadata": {
+        "name": "SuperDs for OEM",
+        "timestamp": 0
+    },
+    "distributionSetList": [
+        {
+            "metadata": {
+                "index": "7",
+                "name": "ds with supplierId",
+                "description": "supplierId",
+                "architecture": "OEM",
+                "category": "BUG_FIX",
+                "severity": "RECOMMENDED",
+                "execution": "REGULAR",
+                "downloadMode": "REGULAR",
+                "releaseNotesId": "1234",
+                "createdBy": "Olga"
+            },
+            "customDependencies": {
+                "checkType": "SimpleCheck",
+                "id": 555554,
+                "version": {
+                    "major": 0,
+                    "minor": 0,
+                    "revision": 0,
+                    "build": 100
+                },
+                "operator": "lessOrEqualTo",
+                "type": "Firmware"
+            },
+            "modules": [
+                {
+                    "id": 555554,
+                    "version": {
+                        "major": 0,
+                        "minor": 0,
+                        "revision": 0,
+                        "build": 4
+                    }
+                },
+                {
+                    "id": 555552,
+                    "version": {
+                        "major": 0,
+                        "minor": 0,
+                        "revision": 0,
+                        "build": 2
+                    }
+                }
+            ]
+        }
+    ]
+}
+

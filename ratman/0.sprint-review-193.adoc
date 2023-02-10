@@ -1,0 +1,115 @@
+:icons: font
+
+
+:stylesdir: ../../styles
+:stylesheet:  basic.css
+
+
+:toc:
+= Ratman Sprint Review 193
+
+
+=== 1. Improved FDS-Controller exception handling http://issuetracking.bsh-sdd.com/browse/FU-6836[FU-6836]
+
+====== *Problem*: Exceptions without body are hard to follow
+
+====== *Solution*: Introduce Exceptions with problem json details
+
+
+* As a first step towards well established problem detail json we enable our services to return proper details as json in the case of any failure on a rest-endpoint
+* See details on fields of the https://wiki.bsh-sdd.com/display/FU/2022-12-22+Sprint+193+Review[Problem Details fields]
+
+** *Spring-services* return problem detail jsons when requested via accept-header "application/problem+json"
+
+1. `Connect to ds`
+
+2. `Try to get not existing ds`
+
+3. `Try to call wrong method`
+
+4. `Try to create incompatible configuration for btm`
+
+** *Micronaut services* always return problem detail jsons
+
+5. _Connect to firmware-packaging-service_
+6. _Generate micronaut errors_
+
+http://[]
+
+
+
+
+icon:comment[] Undocumented feature: problem details are available for all endpoints of api-gateway via accept header problem+json.
+Behaviours of documented problem details are unchanged.
+
+=== 2. [OEM] separate package persistence by supplier ID https://issuetracking.bsh-sdd.com/browse/FU-6893[FU-6893] and Distributionsets for OEM can be created https://issuetracking.bsh-sdd.com/browse/FU-6751[FU-6751]
+
+.New package structure:
+* REU development:
+** firmware-repository-dev-homeconnectfds-com/fds/packages_testing/
+
+** firmware-repository-dev-homeconnectfds-com/fds/packages_qualification/
+** firmware-repository-dev-homeconnectfds-com/fds/packages_validation/
+REU production:
+** firmware-repository-reu-homeconnectfds-com/fds/packages_operation/
+** firmware-repository-reu-homeconnectfds-com/fds/packages_production/
+RGC development:
+** firmware-repository-dev-homeconnectfds-cn/fds/packages_validation/
+RGC production:
+** firmware-repository-rgc-homeconnectfds-cn/fds/packages_operation/
+** firmware-repository-rgc-homeconnectfds-cn/fds/packages_production/
+** with subfolders
+*** internal for BSH internal/1 update packages
+*** oem/<supplierId> for OEM supplied update packages with their supplierId#
+
+.*Create DS for oem via bulk-distribution-set*
+
+** Superds for OEM (adjust supplierId to something different than 1)
+- _get hash of the up and check in the AWS repo_
+
+** Superds for SYMANA
+
+** Superds without supplier id
+
+
+.*Create DS in ASC*
+
+* Create ds, check
+* _import of firmware modules for OEM_
+
+
+
+
+
+
+
+Type the word [.userinput]#asciidoctor# into the search bar.
+
+
+
+
+ When the user types the three letters ad-, the editor suggests live templates for common AsciiDoc structures like lists, links and source code. C
+
+icon:file[] And a file icon
+
+[NOTE]
+====
+undocumented feature: problem details are available for all endpoints of api-gateway via accept header problem+json.
+
+Behaviours of documented problem details are unchanged.
+
+====
+
+
+.Optional title
+[example]
+This is an example of an example block.
+
+
+.Optional Title
+****
+Sidebars are used to visually separate auxiliary bits of content
+that supplement the main text.
+
+TIP: They can contain any type of content.
+

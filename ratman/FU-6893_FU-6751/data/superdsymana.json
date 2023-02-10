@@ -1,0 +1,56 @@
+{
+    "metadata": {
+        "name": "SuperDs for SYMANA",
+        "timestamp": 0
+    },
+    "distributionSetList": [
+        {
+            "metadata": {
+                "index": "1",
+                "name": "ds with supplierId",
+                "description": "supplierId",
+                "architecture": "SYMANA",
+                "category": "BUG_FIX",
+                "severity": "RECOMMENDED",
+                "execution": "REGULAR",
+                "downloadMode": "REGULAR",
+                "releaseNotesId": "1234",
+                "createdBy": "Olga",
+                "supplierId": 1
+            },
+            "customDependencies": {
+                "checkType": "SimpleCheck",
+                "id": 666665,
+                "version": {
+                    "major": 3,
+                    "minor": 0,
+                    "revision": 0,
+                    "build": 100
+                },
+                "operator": "lessOrEqualTo",
+                "type": "Firmware"
+            },
+            "modules": [
+                {
+                    "id": 666665,
+                    "version": {
+                        "major": 3,
+                        "minor": 0,
+                        "revision": 0,
+                        "build": 5
+                    }
+                },
+                                {
+                    "id": 666663,
+                    "version": {
+                        "major": 3,
+                        "minor": 0,
+                        "revision": 0,
+                        "build": 3
+                    }
+                }
+            ]
+        }
+    ]
+}
+
